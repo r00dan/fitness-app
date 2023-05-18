@@ -8,3 +8,4 @@ export { Component as Drawer, Placement } from './Drawer/Drawer';
 export { Component as Input } from './Input/Input';
 export { Component as InputNumber } from './InputNumber/InputNumber';
 export { Component as Popover } from './Popover/Popover';
+export { Component as RadioGroup } from './RadioGroup/RadioGroup';

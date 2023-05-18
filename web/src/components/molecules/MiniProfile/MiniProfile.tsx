@@ -1,9 +1,10 @@
 import { Divider } from "antd";
+import { useNavigate } from "react-router-dom";
 
-import { Button, ButtonThemes } from "atoms";
+import { useSettings } from "hooks";
+import { Button, ButtonThemes, RadioGroup } from "atoms";
 
 import style from './MiniProfile.module.scss';
-import { useNavigate } from "react-router-dom";
 
 interface MiniProfileProps {
   name: string;
@@ -15,6 +16,14 @@ export function MiniProfile({
   onSignOutClick,
 }: MiniProfileProps) {
   const navigate = useNavigate();
+  const {
+    language,
+    unit,
+    languageOptions,
+    unitOptions,
+    handleLanguageChange,
+    handleUnitChange,
+  } = useSettings();
   return (
     <div className={style.root}>
       <div
@@ -22,7 +31,6 @@ export function MiniProfile({
       >
         {name}
       </div>
-      <Divider style={{ marginTop: '.5rem', marginBottom: '1rem' }} />
       <div className={style.menuList}>
         <Button
           noMargins
@@ -40,15 +48,22 @@ export function MiniProfile({
         >
           Schedule
         </Button>
-        <Button
-          noMargins
-          fullWidth
-          theme={ButtonThemes.TRANSPARENT}
-          onClick={() => navigate('/settings')}
-        >
-          Settings
-        </Button>
-        <Button
+      </div>
+      <Divider style={{ marginTop: '1rem', marginBottom: '1rem' }} />
+      <div className={style.settings}>
+        <RadioGroup
+          value={language}
+          options={languageOptions}
+          onChange={handleLanguageChange}
+        />
+        <RadioGroup
+          value={unit}
+          options={unitOptions}
+          onChange={handleUnitChange}
+        />
+      </div>
+      {/* <Divider style={{ marginTop: '1rem', marginBottom: '1rem' }} /> */}
+      <Button
           noMargins
           fullWidth
           theme={ButtonThemes.GRADIENT_4}
@@ -56,7 +71,6 @@ export function MiniProfile({
         >
           Sign Out
         </Button>
-      </div>
     </div>
   )
 }

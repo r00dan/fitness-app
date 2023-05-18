@@ -14,6 +14,7 @@ const darkTheme: ThemeConfig = {
     colorBgElevated: '#333',
     colorText: '#fff',
     colorTextBase: '#fff',
+    colorPrimary: '#FF3CAC'
   }
 };
 
