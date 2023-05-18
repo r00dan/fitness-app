@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { type User, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 import { auth } from '../main';
+import { useLoader } from 'hooks';
 
 interface IUseAuth {
   token: string;
@@ -11,11 +12,16 @@ interface IUseAuth {
 }
 
 export function useAuth(): IUseAuth {
+  const { turnOnLoader, turnOffLoader } = useLoader();
   const [token, setToken] = useState<string>('');
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    auth.onAuthStateChanged(setUser);
+    turnOnLoader();
+    auth.onAuthStateChanged((data) => {
+      turnOffLoader();
+      setUser(data)
+    });
   }, []);
 
   const handleSignInClick = async (): Promise<void> => {

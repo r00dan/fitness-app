@@ -3,6 +3,7 @@ export { Card } from './Card/Card';
 export { Layout } from './Layout/Layout';
 export { Calendar } from './Calendar/Calendar';
 export { Link } from './Link/Link';
+export { Loader } from './Loader/Loader';
 export { ThemeProvider } from './ThemeProvider/ThemeProvider';
 export { Component as Drawer, Placement } from './Drawer/Drawer';
 export { Component as Input } from './Input/Input';

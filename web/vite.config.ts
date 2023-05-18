@@ -13,6 +13,7 @@ export default defineConfig({
       "pages": path.resolve(__dirname, "./src/components/pages/index.ts"),
       "hooks": path.resolve(__dirname, "./src/hooks/index.ts"),
       "assets": path.resolve(__dirname, "./src/assets/"),
+      "stores": path.resolve(__dirname, "./src/stores/"),
       "shared-types": path.resolve(__dirname, "../shared/types"),
     },
   },

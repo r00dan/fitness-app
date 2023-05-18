@@ -1,5 +1,7 @@
 import { useEffect, useReducer, useRef } from 'react';
 
+import { useLoader } from 'hooks';
+
 interface State<T> {
   data?: T;
   error?: Error;
@@ -32,10 +34,16 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-export function useFetch<T = unknown, K = unknown>(endpoint: Endpoint, method: Method, body?: K): State<T> {
+export function useFetch<T = unknown, K = unknown>(
+  endpoint: Endpoint,
+  method: Method,
+  body?: K,
+  withLoader?: boolean,
+): State<T> {
   const url = `${API}${endpoint}`;
   const cache = useRef<Cache<T>>({});
   const cancelRequest = useRef<boolean>(false);
+  const { UNSAFE_forceLoaderStatus } = useLoader();
   const initialState: State<T> = {
     error: undefined,
     data: undefined,
@@ -99,6 +107,14 @@ export function useFetch<T = unknown, K = unknown>(endpoint: Endpoint, method: M
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url])
+
+  useEffect(() => {
+    const { loading } = state;
+
+    if (withLoader) {
+      UNSAFE_forceLoaderStatus(!!loading);
+    }
+  }, [state.loading])
 
   return state;
 }

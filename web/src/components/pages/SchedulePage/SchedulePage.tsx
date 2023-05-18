@@ -17,13 +17,6 @@ export function SchedulePage(): JSX.Element {
         <Calendar
           onDayClick={handleSelectWorkoutDay}
         />
-        <div
-          className={style.grid}
-        >
-          <div>
-            History
-          </div>
-        </div>
         <Drawer
           title={`Workout program for ${formattedDate}`}
           isOpen={isOpened}
