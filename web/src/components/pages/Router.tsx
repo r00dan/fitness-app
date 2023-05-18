@@ -1,16 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { PrivateRoute } from "./PrivateRoute";
-import { HomePage } from "./HomePage/HomePage";
-import { ProfilePage } from "./ProfilePage/ProfilePage";
-import { SchedulePage } from "./SchedulePage/SchedulePage";
-import { ErrorPage } from "./ErrorPage/ErrorPage";
+// import { PrivateRoute } from "./PrivateRoute";
+import {
+  HomePage,
+  SchedulePage,
+  DashboardPage,
+  ErrorPage,
+} from './index';
 
 export enum Locations {
   ROOT = '/',
   ERROR = '*',
-  DASHBOARD = '/schedule',
-  PROFILE = '/profile',
+  SCHEDULE = '/schedule',
+  DASHBOARD = '/dashboard',
 }
 
 export function Router(): JSX.Element {
@@ -18,10 +20,8 @@ export function Router(): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path={Locations.ROOT} element={<HomePage />} />
-        <Route path={Locations.DASHBOARD} element={<SchedulePage />} />
-        <Route path={Locations.PROFILE} element={
-          <PrivateRoute element={<ProfilePage />} />
-        } />
+        <Route path={Locations.SCHEDULE} element={<SchedulePage />} />
+        <Route path={Locations.DASHBOARD} element={<DashboardPage />} />
         {/* <Route path={Locations.DASHBOARD} element={
           <PrivateRoute element={<DashboardPage />} />
         } /> */}

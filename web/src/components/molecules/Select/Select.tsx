@@ -11,6 +11,7 @@ export type OptionType<T = string> = { label: string, value: T, disabled?: boole
 interface ISelectProps {
   options: OptionType[];
   value?: OptionType;
+  placeholder?: string;
   className?: string;
   disabled?: boolean;
   clearable?: boolean;
@@ -20,6 +21,7 @@ interface ISelectProps {
 export function CustomSelect({
   options,
   value,
+  placeholder,
   className,
   disabled,
   clearable,
@@ -37,6 +39,7 @@ export function CustomSelect({
         value={value}
         options={options}
         defaultValue={options[0]}
+        placeholder={placeholder}
         onChange={onChange}
       />
     </ThemeProvider>
