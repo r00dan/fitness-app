@@ -1,4 +1,4 @@
-# fitness-app🥰
+# fitness-app
 
 To start a postgresql and backend containers:
 
