@@ -1,0 +1,47 @@
+@import '../../../assets/variables';
+
+.root {
+  margin-top: 1rem;
+}
+
+.workouts {
+  margin-bottom: 1rem;
+}
+
+.workout {
+  margin-bottom: 1rem;
+}
+
+.exerciseSelector {
+  margin-bottom: .75rem;
+}
+
+.sets {
+  margin-bottom: 1rem;
+}
+
+.setWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.set {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 20px 20px 20px 1fr 1fr;
+  gap: 1rem;
+}
+
+.addSetButton {
+  width: calc(100% - 60px - 3rem);
+  align-self: flex-end;
+}
+
+.setIcon {
+  cursor: pointer;
+  opacity: .2;
+
+  &:hover {
+    opacity: 1;
+  }
+}

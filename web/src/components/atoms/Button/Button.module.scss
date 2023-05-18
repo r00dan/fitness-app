@@ -1,0 +1,52 @@
+@import "../../../assets/variables.scss";
+
+.root {
+  border: none;
+  color: #eee;
+  padding: .6rem 1.5rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #969696;
+  }
+}
+
+.primary {
+  background-color: $primary;
+}
+
+.secondary {
+  background-color: $secondary;
+}
+
+.add {
+  width: 100%;
+  padding: .2rem 0;
+  border-radius: .3rem;
+  background-color: transparent;
+  color: $white;
+  font-size: 1.3rem;
+  border: 1px dashed $secondary;
+  margin: .5rem 0;
+}
+
+.gradient_1 {
+  background-image: $gradient_1;
+}
+
+.gradient_2 {
+  background-image: $gradient_2;
+}
+
+.gradient_3 {
+  background-image: $gradient_3;
+}
+
+.gradient_4 {
+  background-image: $gradient_4;
+}

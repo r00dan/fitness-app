@@ -1,0 +1,61 @@
+@import "../../../assets/variables.scss";
+
+.root {
+  width: 100%;
+  border-radius: 1rem;
+  padding: 1rem;
+  -webkit-box-shadow: $soft-shadow;
+  -moz-box-shadow: $soft-shadow;
+  box-shadow: $soft-shadow;
+}
+
+.coloredBg {
+  width: 100%;
+  border-radius: .75rem;
+  height: 80px;
+  padding: 1rem;
+  background-color: #21D4FD;
+  background-image: $gradient_4;
+  color: $white;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exerciseTitles {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+}
+
+.details {
+  margin-top: .5rem;
+}
+
+.chart {
+  width: 100%;
+}
+
+.dates {
+  font-size: .75rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding-bottom: .5rem;
+  color: $deep-purple;
+}
+
+.weights {
+  display: flex;
+  flex-direction: column;
+  background: #eee;
+  border-radius: 1rem;
+  padding: 1rem;
+}

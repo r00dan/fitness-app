@@ -1,0 +1,22 @@
+@import '../../../assets/variables';
+
+.root {
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.dashboardItem {
+  min-height: 500px;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.workoutTitle {
+  font-size: 1.25rem;
+  font-weight: 900;
+}

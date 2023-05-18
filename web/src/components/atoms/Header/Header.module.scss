@@ -1,0 +1,15 @@
+.root {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  font-family: 'Anton';
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+}

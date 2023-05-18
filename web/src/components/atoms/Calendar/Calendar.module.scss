@@ -1,0 +1,95 @@
+@import '../../../assets/variables';
+
+.root {
+  width: 100%;
+  margin: 3rem 0;
+}
+
+.header {
+
+}
+
+.headerMY {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  justify-items: center;
+  border-bottom: 2px solid lighten($bg, 15);
+  align-items: center;
+  user-select: none;
+  height: 55px;
+}
+
+.headerCurrentMY {
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.headerWeekDays {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  padding-top: 1rem;
+  color: darken($grey, 20);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.headerIcon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($bg, 5);
+  }
+}
+
+.bodyRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.bodyCell {
+  width: 100%;
+  height: 70px;
+  background-color: darken($secondary, 35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: .25rem;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    background-color: darken($secondary, 30);
+  }
+}
+
+.notCurrentMonth {
+  background-color: $bg;
+  cursor: default;
+
+  &:hover {
+    background-color: $bg;
+  }
+}
+
+.currentDay {
+  background-color: darken($primary, 40);
+
+  &:hover {
+    background-color: darken($primary, 30);
+  }
+}
+
+.selected {
+  border: 1px solid $primary;
+}
