@@ -12,6 +12,8 @@ export enum ButtonThemes {
   // @ts-expect-error
   ADD = style.add,
   // @ts-expect-error
+  TRANSPARENT = style.transparent,
+  // @ts-expect-error
   GRADIENT_1 = style.gradient_1,
   // @ts-expect-error
   GRADIENT_2 = style.gradient_2,
@@ -27,6 +29,8 @@ interface IButtonProps {
   disabled?: boolean;
   isAddButton?: boolean;
   className?: string;
+  noMargins?: boolean;
+  fullWidth?: boolean;
   onClick: () => void | Promise<void>;
 }
 
@@ -35,6 +39,8 @@ export function Button({
   isAddButton = false,
   theme = ButtonThemes.SECONDARY,
   disabled = false,
+  noMargins = false,
+  fullWidth = false,
   className,
   onClick,
 }: IButtonProps): JSX.Element {
@@ -44,6 +50,8 @@ export function Button({
         style.root,
         theme && theme,
         isAddButton && style.add,
+        noMargins && style.noMargins,
+        fullWidth && style.fullWidth,
         className && className,
       ])}
       disabled={disabled}

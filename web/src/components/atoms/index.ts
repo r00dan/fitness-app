@@ -1,10 +1,10 @@
 export { Button, ButtonThemes } from './Button/Button';
 export { Card } from './Card/Card';
 export { Layout } from './Layout/Layout';
-export { Header } from './Header/Header';
-export { Auth } from './Auth/Auth';
 export { Calendar } from './Calendar/Calendar';
-export { Component as Drawer } from './Drawer/Drawer';
+export { Link } from './Link/Link';
+export { ThemeProvider } from './ThemeProvider/ThemeProvider';
+export { Component as Drawer, Placement } from './Drawer/Drawer';
 export { Component as Input } from './Input/Input';
 export { Component as InputNumber } from './InputNumber/InputNumber';
-export { ThemeProvider } from './ThemeProvider/ThemeProvider';
+export { Component as Popover } from './Popover/Popover';

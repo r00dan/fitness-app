@@ -1,0 +1,15 @@
+.root {
+  width: 200px;
+}
+
+.displayName {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.menuList {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: .5rem;
+}

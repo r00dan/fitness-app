@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { Header } from 'atoms';
+import { Header } from 'molecules';
 
 import style from './Layout.module.scss';
 
