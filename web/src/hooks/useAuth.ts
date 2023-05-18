@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { type User, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 import { auth } from '../main';
@@ -7,13 +6,11 @@ import { auth } from '../main';
 interface IUseAuth {
   token: string;
   currentUser: User | null;
-  handleSignInClick: () => Promise<void>;
-  handleAvatarClick: () => void;
-  handleSignOutClick: () => Promise<void>;
+  handleSignInClick(): Promise<void>;
+  handleSignOutClick(): Promise<void>;
 }
 
 export function useAuth(): IUseAuth {
-  const navigate = useNavigate();
   const [token, setToken] = useState<string>('');
   const [user, setUser] = useState<User | null>(null);
 
@@ -37,16 +34,11 @@ export function useAuth(): IUseAuth {
 
     setUser(null);
   }
-
-  const handleAvatarClick = (): void => {
-    navigate('/profile');
-  }
   
   return {
     token,
     currentUser: user,
     handleSignInClick,
-    handleAvatarClick,
     handleSignOutClick,
   };
 }

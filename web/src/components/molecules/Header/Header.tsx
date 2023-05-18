@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import { Auth } from 'atoms';
+import { Auth } from 'molecules';
 
 import style from './Header.module.scss';
 

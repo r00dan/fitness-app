@@ -4,12 +4,13 @@
   border: none;
   color: #eee;
   padding: .6rem 1.5rem;
-  border-radius: 1rem;
+  border-radius: .5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   line-height: 1;
   cursor: pointer;
+  font-weight: 600;
 
   &:disabled {
     background-color: #969696;
@@ -35,6 +36,11 @@
   margin: .5rem 0;
 }
 
+.transparent {
+  border: 1px solid $grey;
+  background-color: transparent;
+}
+
 .gradient_1 {
   background-image: $gradient_1;
 }
@@ -49,4 +55,12 @@
 
 .gradient_4 {
   background-image: $gradient_4;
+}
+
+.noMargins {
+  margin: 0;
+}
+
+.fullWidth {
+  width: 100%;
 }

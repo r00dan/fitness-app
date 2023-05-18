@@ -1,0 +1,8 @@
+@import '../../../assets/variables';
+
+.root {
+  cursor: pointer;
+  display: inline;
+  text-decoration: underline;
+  color: $primary;
+}
