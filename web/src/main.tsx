@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom/client';
+import { RecoilRoot } from 'recoil';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
@@ -21,5 +22,7 @@ export const auth = getAuth(app);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
   .render(
-    <Router />
+    <RecoilRoot>
+      <Router />
+    </RecoilRoot>
   );
