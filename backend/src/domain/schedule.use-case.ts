@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+
 import { CreateScheduleDto } from 'src/application/dto';
 import { Schedule } from 'src/infrastructure';
 import { Repository } from 'typeorm';

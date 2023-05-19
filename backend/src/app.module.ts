@@ -2,13 +2,33 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 
-import { ExerciseController, ScheduleController } from './presentation';
-import { ExerciseUseCase, ScheduleUseCase } from './domain';
-import { Exercise, Schedule } from './infrastructure';
+import {
+  ExerciseController,
+  ScheduleController,
+  UserController,
+  CustomExerciseController,
+} from 'src/presentation';
+import {
+  ExerciseUseCase,
+  ScheduleUseCase,
+  UserUseCase,
+  CustomExerciseUseCase,
+} from 'src/domain';
+import { Exercise, Schedule, User, CustomExercise } from 'src/infrastructure';
 
-const entities = [Exercise, Schedule];
-const controllers = [ExerciseController, ScheduleController];
-const useCases = [ExerciseUseCase, ScheduleUseCase];
+const entities = [Exercise, Schedule, User, CustomExercise];
+const controllers = [
+  ExerciseController,
+  ScheduleController,
+  UserController,
+  CustomExerciseController,
+];
+const useCases = [
+  ExerciseUseCase,
+  ScheduleUseCase,
+  UserUseCase,
+  CustomExerciseUseCase,
+];
 const providers = [...useCases, ...entities, ...controllers];
 
 @Module({

@@ -1,33 +1,41 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
-
-enum UserRole {
-  ADMIN = 'admin',
-  USER = 'user',
-}
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { CustomExercise } from './custom-exercise.model';
 
 @Entity('user')
 export class User {
   @PrimaryColumn()
-  public id!: string;
+  id!: string;
 
   @Column()
-  public role!: UserRole;
+  email!: string;
 
   @Column()
-  public email!: string;
+  localId!: string;
 
   @Column()
-  public username!: string;
+  displayName!: string;
 
   @Column()
-  public firstName!: string;
+  lastLoginAt!: string;
 
   @Column()
-  public lastName!: string;
+  lastRefreshAt!: string;
 
   @Column()
-  public secureCode!: string;
+  preferedLanguage!: string;
 
   @Column()
-  public token!: string;
+  preferedUnit!: string;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt!: Date;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  updatedAt!: Date;
+
+  @Column()
+  archived!: boolean;
+
+  @OneToMany(() => CustomExercise, (customExercise) => customExercise.user)
+  customExercises: CustomExercise[];
 }
