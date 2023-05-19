@@ -6,3 +6,4 @@ export {
   type WorkoutExercise,
   type WorkoutSet,
 } from './schedule.model';
+export { CustomExercise } from './custom-exercise.model';
