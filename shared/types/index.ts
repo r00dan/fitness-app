@@ -5,6 +5,7 @@ import {
   User,
   WorkoutExercise,
   WorkoutSet,
+  CustomExercise,
 } from '../../backend/src/infrastructure';
 
 import {
@@ -13,6 +14,10 @@ import {
   UpdateExerciseDto,
   DeleteExerciseDto,
   CreateScheduleDto,
+  CreateUserDto,
+  UpdateUserDto,
+  AddWorkoutScheduleDto,
+  CreateCustomExerciseDto,
 } from '../../backend/src/application/dto';
 
 export interface UserData extends User { };
@@ -21,9 +26,17 @@ export interface HistoryData extends History { };
 export interface ScheduleData extends Schedule { };
 export interface WorkoutExerciseData extends WorkoutExercise { };
 export interface WorkoutSetData extends WorkoutSet { };
+export interface CustomExerciseData extends CustomExercise { };
 
 export interface GetExerciseDtoInput extends GetExerciseDto { };
 export interface CreateExerciseDtoInput extends CreateExerciseDto { };
 export interface UpdateExerciseDtoInput extends UpdateExerciseDto { };
 export interface DeleteExerciseDtoInput extends DeleteExerciseDto { };
+
 export interface CreateScheduleDtoInput extends CreateScheduleDto { };
+export interface AddWorkoutScheduleDtoInput extends AddWorkoutScheduleDto { };
+
+export interface CreateUserDtoInput extends CreateUserDto { };
+export interface UpdateUserDtoInput extends UpdateUserDto { };
+
+export interface CreateCustomExerciseDtoInput extends CreateCustomExerciseDto { };

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { type RadioChangeEvent } from 'antd';
 
 import { OptionType } from "molecules";
+import { useUser } from "stores";
 
 export const enum Language {
   EN = 'en',
@@ -14,8 +15,10 @@ export const enum Unit {
 }
 
 export function useSettings() {
-  const defaultLanguage = Language.EN;
-  const defaultUnit = Unit.KG;
+  const { user: { preferedLanguage, preferedUnit }, updateUser } = useUser();
+
+  const defaultLanguage = preferedLanguage as Language ?? Language.EN;
+  const defaultUnit = preferedUnit as Unit ?? Unit.KG;
   
   const makeLanguageOptions = (): OptionType[] => ([
     {
@@ -43,8 +46,16 @@ export function useSettings() {
   const [language, setLanguage] = useState<Language>(defaultLanguage);
   const [unit, setUnit] = useState<Unit>(defaultUnit);
 
-  const handleLanguageChange = ({ target: { value } }: RadioChangeEvent) => setLanguage(value);
-  const handleUnitChange = ({ target: { value } }: RadioChangeEvent) => setUnit(value);
+  const handleLanguageChange = ({ target: { value } }: RadioChangeEvent) => {
+    setLanguage(value);
+    updateUser({ preferedLanguage: value });
+  };
+
+  const handleUnitChange = ({ target: { value } }: RadioChangeEvent) => {
+    console.log('change unit click');
+    setUnit(value);
+    updateUser({ preferedUnit: value });
+  };
 
   return {
     language,

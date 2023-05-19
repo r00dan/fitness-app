@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 
-import { loaderStore } from "stores";
+import { loaderStore } from "./loader.store";
 
 export function useLoader() {
   const [loaderStatus, setLoaderStatus] = useRecoilState(loaderStore);

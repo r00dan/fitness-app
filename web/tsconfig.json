@@ -13,6 +13,7 @@
       "hooks": ["hooks"],
       "assets": ["assets"],
       "stores": ["stores"],
+      "api": ["api"],
       "shared-types": ["../../shared/types/index.ts"],
     },
 
