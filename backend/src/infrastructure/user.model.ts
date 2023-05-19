@@ -9,16 +9,16 @@ export class User {
   @Column()
   email!: string;
 
-  @Column()
+  @Column({ nullable: true })
   localId!: string;
 
   @Column()
   displayName!: string;
 
-  @Column()
+  @Column({ nullable: true })
   lastLoginAt!: string;
 
-  @Column()
+  @Column({ nullable: true })
   lastRefreshAt!: string;
 
   @Column()

@@ -1,11 +1,7 @@
 import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 
 import { UserUseCase } from 'src/domain';
-import {
-  CreateUserDto,
-  UpdateUserDto,
-  UpdateUserInfoDto,
-} from 'src/application/dto';
+import { CreateUserDto, UpdateUserDto } from 'src/application/dto';
 
 @Controller('user')
 export class UserController {
@@ -26,13 +22,13 @@ export class UserController {
     return this.userUseCase.updateUser(updateUserDto);
   }
 
-  @Put('/:id')
-  public async updateInfo(
-    @Param('id') id: string,
-    @Body() updateUserInfoDto: UpdateUserInfoDto,
-  ) {
-    return this.userUseCase.updateUserInfo(id, updateUserInfoDto);
-  }
+  // @Put('/:id')
+  // public async updateInfo(
+  //   @Param('id') id: string,
+  //   @Body() updateUserInfoDto: UpdateUserInfoDto,
+  // ) {
+  //   return this.userUseCase.updateUserInfo(id, updateUserInfoDto);
+  // }
 
   @Put('/:id/remove')
   public async remove(@Param('id') id: string) {

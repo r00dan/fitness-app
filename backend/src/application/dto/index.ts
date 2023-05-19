@@ -10,4 +10,3 @@ export { AddWorkoutScheduleDto } from './schedule/add-workout-schedule.dto';
 
 export { CreateUserDto } from './user/create-user.dto';
 export { UpdateUserDto } from './user/update-user.dto';
-export { UpdateUserInfoDto } from './user/update-user-info.dto';

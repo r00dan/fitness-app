@@ -14,6 +14,7 @@ export default defineConfig({
       "hooks": path.resolve(__dirname, "./src/hooks/index.ts"),
       "assets": path.resolve(__dirname, "./src/assets/"),
       "stores": path.resolve(__dirname, "./src/stores/"),
+      "api": path.resolve(__dirname, "./src/api/"),
       "shared-types": path.resolve(__dirname, "../shared/types"),
     },
   },

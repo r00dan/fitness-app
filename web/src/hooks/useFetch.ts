@@ -2,6 +2,22 @@ import { useEffect, useReducer, useRef } from 'react';
 
 import { useLoader } from 'hooks';
 
+interface FetchOptions<K> {
+  endpoint: Endpoint,
+  method: Method,
+  body?: K,
+  params?: string,
+  withLoader?: boolean,
+}
+
+export enum Endpoint {
+  USER = '/user',
+  HISTORY = '/history',
+  EXERCISE = '/exercise',
+  SCHEDULE = '/schedule',
+  CUSTOM_EXERCISE = '/custom-exercise',
+}
+
 interface State<T> {
   data?: T;
   error?: Error;
@@ -15,13 +31,6 @@ type Action<T> =
   | { type: 'fetched'; payload: T }
   | { type: 'error'; payload: Error };
 
-export enum Endpoint {
-  USER = '/user',
-  HISTORY = '/history',
-  EXERCISE = '/exercise',
-  SCHEDULE = '/schedule',
-}
-
 export enum Method {
   GET = 'GET',
   POST = 'POST',
@@ -34,13 +43,14 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-export function useFetch<T = unknown, K = unknown>(
-  endpoint: Endpoint,
-  method: Method,
-  body?: K,
-  withLoader?: boolean,
-): State<T> {
-  const url = `${API}${endpoint}`;
+export function useFetch<T = unknown, K = unknown>({
+  endpoint,
+  method,
+  body,
+  params,
+  withLoader,
+}: FetchOptions<K>): State<T> {
+  const url = `${API}${endpoint}${params ?? ''}`;
   const cache = useRef<Cache<T>>({});
   const cancelRequest = useRef<boolean>(false);
   const { UNSAFE_forceLoaderStatus } = useLoader();

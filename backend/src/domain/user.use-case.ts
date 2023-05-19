@@ -2,11 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import {
-  CreateUserDto,
-  UpdateUserDto,
-  UpdateUserInfoDto,
-} from 'src/application/dto';
+import { CreateUserDto, UpdateUserDto } from 'src/application/dto';
 import { User } from 'src/infrastructure';
 
 @Injectable()
@@ -62,18 +58,6 @@ export class UserUseCase {
   }
 
   public async updateUser({ id, ...dto }: UpdateUserDto) {
-    const user = await this.userRepository.findOne({ where: { id } });
-
-    if (!user) {
-      return JSON.stringify({
-        message: `Cannot find user.`,
-      });
-    }
-
-    await this.userRepository.update({ id }, { ...dto });
-  }
-
-  public async updateUserInfo(id: string, dto: UpdateUserInfoDto) {
     const user = await this.userRepository.findOne({ where: { id } });
 
     if (!user) {
