@@ -21,7 +21,9 @@ interface IDrawerProps {
 
 const maskStyles: CSSProperties = {
   backdropFilter: 'blur(4px)',
-}
+};
+
+const isMobile = false;
 
 export function Component({
   isOpen,
@@ -36,7 +38,8 @@ export function Component({
         closable
         destroyOnClose
         maskClosable
-        width={600}
+        // TODO: Mobile scale
+        width={isMobile ? '100%' : 750}
         title={title}
         className={style.root}
         placement={placement}

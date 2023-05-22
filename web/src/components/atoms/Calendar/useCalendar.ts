@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-import { useDateTimeHelper, IDay, IWeek } from 'hooks';
+import { useDateTimeHelper, Day, Week } from 'hooks';
+import { useSchedule } from 'stores';
 
 const headerMYDateFormat = "MMMM YYYY";
 const headerDDateFormat = "ddd";
@@ -12,8 +13,10 @@ export function useCalendar() {
     formateDateToObject,
   } = useDateTimeHelper();
 
+  const { schedules } = useSchedule();
+
   const [selectedDay, setSelectedDay] = useState<number>(now.date());
-  const [arrayOfDays, setArrayOfDays] = useState<IWeek[]>([]);
+  const [arrayOfDays, setArrayOfDays] = useState<Week[]>([]);
 
   const handleNextMonthClick = () => {
     const plus = now.add(1, "month");
@@ -25,7 +28,7 @@ export function useCalendar() {
     setCurrentMonth(minus);
   };
 
-  const handleCellClick = (date: IDay) => {
+  const handleCellClick = (date: Day) => {
     setSelectedDay(date.day);
   }
 
@@ -39,15 +42,17 @@ export function useCalendar() {
     return result;
   }
 
-  const getAllDays = () => {
+  const getAllDays = useCallback(() => {
     const nextMonth = now.add(1, "month").month();
-    const allDates: IWeek[] = [];
+    const allDates: Week[] = [];
     let currentDate = now.startOf("month").weekday(0);
     let weekDates = [];
     let weekCounter = 1;
 
     while (currentDate.weekday(0).toObject().months !== nextMonth) {
-      const formated = formateDateToObject(currentDate);
+      const workout = schedules.find(({ workoutDate }) =>
+        currentDate.isSame(workoutDate, 'D') && currentDate.isSame(workoutDate, 'M'));
+      const formated = formateDateToObject(currentDate, workout);
       weekDates.push(formated);
 
       if (weekCounter === 7) {
@@ -60,11 +65,11 @@ export function useCalendar() {
     }
 
     setArrayOfDays(allDates);
-  };
+  }, [schedules]);
 
   useEffect(() => {
     getAllDays();
-  }, [now]);
+  }, [now, schedules]);
 
   return {
     selectedDay,

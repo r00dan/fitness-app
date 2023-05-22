@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { CreateScheduleDto } from 'src/application/dto';
-import { Schedule } from 'src/infrastructure';
+import { Schedule, User } from 'src/infrastructure';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -10,30 +10,37 @@ export class ScheduleUseCase {
   constructor(
     @InjectRepository(Schedule)
     private readonly scheduleRepository: Repository<Schedule>,
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
   ) {}
 
-  public async getScheduleForOneDay() {
-    return this.scheduleRepository.find();
+  public async getAllSchedulesByUserId(userId: string) {
+    return await this.scheduleRepository.find({
+      where: { user: { id: userId } },
+    });
   }
 
-  public async createSchedule(dto: CreateScheduleDto) {
-    const alreadyExists = await this.scheduleRepository.findOne({
-      where: { id: dto.id },
-    });
+  public async createSchedule({ userId, ...dto }: CreateScheduleDto) {
+    const currentDate = new Date();
+    const user = await this.userRepository.findOne({ where: { id: userId } });
 
-    if (alreadyExists) {
-      throw new Error(
-        `You cannot create new schedule instance with same id: ${dto.id}.`,
-      );
-    }
-
-    const currentTime = new Date();
-    const newInstance = this.scheduleRepository.create({
+    const schedule = this.scheduleRepository.create({
       ...dto,
-      createdAt: currentTime,
-      updatedAt: currentTime,
+      user,
+      createdAt: currentDate,
+      updatedAt: currentDate,
     });
 
-    await this.scheduleRepository.save(newInstance);
+    await this.scheduleRepository.save(schedule);
+  }
+
+  public async removeSchedule(scheduleId: string) {
+    const schedule = await this.scheduleRepository.findOne({
+      where: { id: scheduleId },
+    });
+
+    if (schedule) {
+      await this.scheduleRepository.remove(schedule);
+    }
   }
 }

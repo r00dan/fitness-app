@@ -7,6 +7,7 @@ import {
   DashboardPage,
   ErrorPage,
 } from './index';
+import { useInit } from "hooks";
 
 export enum Locations {
   ROOT = '/',
@@ -16,6 +17,8 @@ export enum Locations {
 }
 
 export function Router(): JSX.Element {
+  useInit();
+  
   return (
     <BrowserRouter>
       <Routes>

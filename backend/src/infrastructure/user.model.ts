@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { CustomExercise } from './custom-exercise.model';
+import { Schedule } from './schedule.model';
 
 @Entity('user')
 export class User {
@@ -37,5 +38,8 @@ export class User {
   archived!: boolean;
 
   @OneToMany(() => CustomExercise, (customExercise) => customExercise.user)
-  customExercises: CustomExercise[];
+  customExercises!: CustomExercise[];
+
+  @OneToMany(() => Schedule, (schedule) => schedule.user)
+  schedule!: Schedule[];
 }

@@ -1,6 +1,6 @@
 import { useRecoilState } from 'recoil';
 
-import { UserStore, userStore } from './user.store';
+import { userStore, type UserStore } from './user.store';
 import { UserApi } from 'api';
 
 export function useUser() {

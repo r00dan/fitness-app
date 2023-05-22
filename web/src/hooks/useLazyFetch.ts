@@ -59,22 +59,23 @@ export function useLazyFetch<T = unknown>({
     }
   }
 
-  const [state, dispatch] = useReducer(fetchReducer, initialState)
+  const [state, dispatch] = useReducer(fetchReducer, initialState);
 
   const fetchData = async <K = unknown>({ body, params }: FetchInput<K>) => {
     dispatch({ type: 'loading' });
-
+    
     if (cache.current[url]) {
       dispatch({ type: 'fetched', payload: cache.current[url] });
       return;
     }
-
+    
     try {
       const response = await fetch(`${url}${params ?? ''}`, {
         headers,
         method,
         body: JSON.stringify(body),
       });
+
       if (!response.ok) {
         throw new Error(response.statusText)
       }

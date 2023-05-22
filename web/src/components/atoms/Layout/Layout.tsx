@@ -21,11 +21,13 @@ export function Layout({
       {withHeader && (
         <Header />
       )}
-      {children}
-      {loaderStatus && (
+      
+      {loaderStatus ? (
         <Loader
           visible={loaderStatus}
         />
+      ) : (
+        children
       )}
     </div>
   )

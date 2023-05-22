@@ -6,7 +6,7 @@ export { UpdateExerciseDto } from './exercise/update-exercise.dto';
 export { CreateCustomExerciseDto } from './customExercise/create-custom-exercise.dto';
 
 export { CreateScheduleDto } from './schedule/create-schedule.dto';
-export { AddWorkoutScheduleDto } from './schedule/add-workout-schedule.dto';
+export { GetScheduleDto } from './schedule/get-schedule.dto';
 
 export { CreateUserDto } from './user/create-user.dto';
 export { UpdateUserDto } from './user/update-user.dto';

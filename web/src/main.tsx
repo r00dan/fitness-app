@@ -20,7 +20,8 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+ReactDOM
+  .createRoot(document.getElementById('root') as HTMLElement)
   .render(
     <RecoilRoot>
       <Router />

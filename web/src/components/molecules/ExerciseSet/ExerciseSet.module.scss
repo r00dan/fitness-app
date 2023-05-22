@@ -1,8 +1,37 @@
+@import "../../../assets/variables";
+
 .root {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
   flex-direction: column;
+  font-weight: 400;
 }
 
-.setWrapper {
+.title {
+  font-size: 1rem;
+  margin: .75rem 0;
+}
+
+.repeatCount {
+  display: inline;
+  color: $primary;
+  font-weight: 600;
+}
+
+.weightCount {
+  display: inline;
+  color: $deep-purple;
+  font-weight: 600;
+}
+
+.requiredRow {
+  display: grid;
+  grid-template-columns: 30px 1.5fr 2fr;
+  align-items: center;
+}
+
+.doneRow {
   display: flex;
+  justify-content: space-between;
 }

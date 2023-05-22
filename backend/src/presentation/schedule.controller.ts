@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { AddWorkoutScheduleDto, CreateScheduleDto } from 'src/application/dto';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { CreateScheduleDto, GetScheduleDto } from 'src/application/dto';
 
 import { ScheduleUseCase } from 'src/domain';
 
@@ -7,21 +7,19 @@ import { ScheduleUseCase } from 'src/domain';
 export class ScheduleController {
   constructor(private readonly scheduleUseCase: ScheduleUseCase) {}
 
-  @Get()
-  public async get() {
-    return await this.scheduleUseCase.getScheduleForOneDay();
+  @Get('/:userId')
+  public async get(@Param('userId') userId: string) {
+    return this.scheduleUseCase.getAllSchedulesByUserId(userId);
   }
 
   @Post()
   public async create(@Body() dto: CreateScheduleDto) {
-    return await this.scheduleUseCase.createSchedule(dto);
+    return this.scheduleUseCase.createSchedule(dto);
   }
 
-  // @Post('/:id/workout')
-  // public async addWorkout(
-  //   @Param('id') id: string,
-  //   @Body() addWorkoutScheduleDto: AddWorkoutScheduleDto,
-  // ) {
-  //   return this.scheduleUseCase.addWorkout({ id, ...dto });
-  // }
+  // TODO: add DTO
+  @Delete()
+  public async delete(@Body() { scheduleId }: { scheduleId: string }) {
+    return this.scheduleUseCase.removeSchedule(scheduleId);
+  }
 }

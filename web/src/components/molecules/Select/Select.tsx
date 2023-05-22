@@ -38,7 +38,7 @@ export function CustomSelect({
         allowClear={clearable}
         value={value}
         options={options}
-        defaultValue={options[0]}
+        defaultValue={{ label: '---', value: '' }}
         placeholder={placeholder}
         onChange={onChange}
       />

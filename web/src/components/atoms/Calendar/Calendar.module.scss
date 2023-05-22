@@ -6,7 +6,7 @@
 }
 
 .header {
-
+  width: 100%;
 }
 
 .headerMY {
@@ -59,7 +59,7 @@
 
 .bodyCell {
   width: 100%;
-  height: 70px;
+  height: 100px;
   background-color: darken($secondary, 35);
   display: flex;
   justify-content: center;
@@ -70,6 +70,21 @@
 
   &:hover {
     background-color: darken($secondary, 30);
+  }
+
+  &.hasWorkout {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: .5rem;
+      left: .5rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $primary;
+    }
   }
 }
 

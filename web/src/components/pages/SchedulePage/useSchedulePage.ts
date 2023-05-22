@@ -1,12 +1,13 @@
-import { IDay, useDateTimeHelper } from "hooks";
 import { useState } from "react";
+
+import { Day, useDateTimeHelper } from "hooks";
 
 export function useSchedule() {
   const { now, formateDateToObject, formateDate } = useDateTimeHelper();
-  const [selectedDate, setSelectedDate] = useState<IDay>(formateDateToObject(now));
+  const [selectedDate, setSelectedDate] = useState<Day>(formateDateToObject(now));
   const [isOpened, setIsOpened] = useState<boolean>(false);
 
-  const handleSelectWorkoutDay = (date: IDay) => {
+  const handleSelectWorkoutDay = (date: Day) => {
     setSelectedDate(date);
     setIsOpened(true);
   };

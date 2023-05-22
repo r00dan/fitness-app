@@ -19,7 +19,7 @@ export function Component({
   after,
   before,
   min = 0,
-  max = 100,
+  max = 999,
   onChange,
 }: InputNumberProps) {
   return (

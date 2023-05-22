@@ -5,7 +5,7 @@
 }
 
 .workouts {
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 .workout {
@@ -13,6 +13,7 @@
 }
 
 .exerciseSelector {
+  margin-top: 2rem;
   margin-bottom: .75rem;
 }
 
@@ -35,6 +36,17 @@
 .addSetButton {
   width: calc(100% - 60px - 3rem);
   align-self: flex-end;
+}
+
+.actionButtons {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.actionButton {
+  margin-left: .5rem;
 }
 
 .setIcon {
