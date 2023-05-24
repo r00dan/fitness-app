@@ -9,7 +9,7 @@ export function useInit() {
   const { loadSchedule, loadingSchedule } = useSchedule();
 
   useEffect(() => {
-    if (user.id) {
+    if (user && user.id) {
       const fetchAndStoreAllData = async () => {
         turnOnLoader();
         
@@ -26,7 +26,7 @@ export function useInit() {
       
       fetchAndStoreAllData();
     }
-  }, [user.id]);
+  }, [user?.id]);
 
   return {};
 }

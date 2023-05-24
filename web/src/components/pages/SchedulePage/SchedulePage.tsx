@@ -1,5 +1,5 @@
 import { Calendar, Drawer, Layout } from 'atoms';
-import { EditWorkoutForm } from 'molecules';
+import { WorkoutForm } from 'molecules';
 import { useSchedule } from './useSchedulePage';
 
 import style from './SchedulePage.module.scss';
@@ -24,7 +24,7 @@ export function SchedulePage(): JSX.Element {
           onClose={handleCloseDrawer}
         >
           <div className={style.workoutTitle}>
-            <EditWorkoutForm
+            <WorkoutForm
               scheduleDay={selectedDate.workout}
             />
           </div>

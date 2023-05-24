@@ -1,10 +1,8 @@
 import { atom } from 'recoil';
 
-import { ExerciseData } from 'shared-types';
+import { ExerciseDataType } from 'shared-types';
 
-export interface ExerciseStore extends ExerciseData {}
-
-export const exerciseStore = atom<ExerciseStore[]>({
+export const exerciseStore = atom<ExerciseDataType[]>({
   key: 'exerciseStore',
   default: [],
 });

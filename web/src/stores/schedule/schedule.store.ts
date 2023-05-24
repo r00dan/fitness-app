@@ -1,10 +1,8 @@
 import { atom } from 'recoil';
 
-import { ScheduleData } from 'shared-types';
+import { ScheduleDataType } from 'shared-types';
 
-export interface ScheduleStore extends ScheduleData {}
-
-export const scheduleStore = atom<ScheduleStore[]>({
+export const scheduleStore = atom<ScheduleDataType[]>({
   key: 'scheduleStore',
   default: [],
 });

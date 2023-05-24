@@ -1,5 +1,5 @@
 export { AddExerciseForm } from './AddExerciseForm/AddExerciseForm';
-export { EditWorkoutForm } from './EditWorkoutForm/EditWorkoutForm';
+export { WorkoutForm } from './WorkoutForm/WorkoutForm';
 export { CustomSelect as Select, type OptionType } from './Select/Select';
 export { ExerciseSet } from './ExerciseSet/ExerciseSet';
 export { Header } from './Header/Header';

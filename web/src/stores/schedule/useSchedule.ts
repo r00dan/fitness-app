@@ -16,7 +16,7 @@ export function useSchedule() {
     if (!loadingSchedule && data?.length) {
       setSchedules(data);
     }
-  }, [user.id, loadingSchedule]);
+  }, [user?.id, loadingSchedule]);
 
   return {
     schedules,
