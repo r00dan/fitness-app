@@ -18,12 +18,13 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "dto": ["src/application/dto/"],
-      "test": ["src/application/test/"],
-      "domain": ["src/domain/"],
-      "infrastructure": ["src/infrastructure/"],
-      "presentation": ["src/presentation/"],
-      "commonTypes": ["src/utils/common.types.ts"],
+      "generator": ["src/generators/"],
+      "common-types": ["src/utils/common.types.ts"],
+      "user": ["src/modules/user/"],
+      "exercise": ["src/modules/exercise/"],
+      "custom-exercise": ["src/modules/custom-exercise/"],
+      "schedule": ["src/modules/schedule/"],
+      "workout": ["src/modules/workout/"],
     }
   }
 }

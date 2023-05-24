@@ -1,10 +1,8 @@
 import { atom } from "recoil";
 
-import { UserData } from 'shared-types';
+import { UserDataType, Nullable } from 'shared-types';
 
-export interface UserStore extends Partial<Omit<UserData, 'customExercises'>> {}
-
-export const userStore = atom<UserStore>({
+export const userStore = atom<Nullable<Partial<UserDataType>>>({
   key: 'userStore',
-  default: {},
+  default: null,
 });

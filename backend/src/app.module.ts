@@ -2,34 +2,28 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 
-import {
-  ExerciseController,
-  ScheduleController,
-  UserController,
-  CustomExerciseController,
-} from 'src/presentation';
-import {
-  ExerciseUseCase,
-  ScheduleUseCase,
-  UserUseCase,
-  CustomExerciseUseCase,
-} from 'src/domain';
-import { Exercise, Schedule, User, CustomExercise } from 'src/infrastructure';
+import { ExerciseController, Exercise, ExerciseUseCase } from 'exercise';
+import { ScheduleController, Schedule, ScheduleUseCase } from 'schedule';
+import { UserController, User, UserUseCase } from 'user';
+import { Workout, WorkoutController, WorkoutUseCase } from 'workout';
 
-const entities = [Exercise, Schedule, User, CustomExercise];
+const entities = [User, Exercise, Schedule, Workout];
+
 const controllers = [
+  UserController,
   ExerciseController,
   ScheduleController,
-  UserController,
-  CustomExerciseController,
+  WorkoutController,
 ];
+
 const useCases = [
+  UserUseCase,
   ExerciseUseCase,
   ScheduleUseCase,
-  UserUseCase,
-  CustomExerciseUseCase,
+  WorkoutUseCase,
 ];
-const providers = [...useCases, ...entities, ...controllers];
+
+const providers = [...entities, ...useCases, ...controllers];
 
 @Module({
   imports: [
@@ -37,7 +31,7 @@ const providers = [...useCases, ...entities, ...controllers];
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.POSTGRES_HOST,
-      port: +process.env.POSTGRES_PORT ?? 5432,
+      port: +process.env.POSTGRES_PORT,
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,

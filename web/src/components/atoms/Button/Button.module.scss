@@ -13,16 +13,32 @@
   font-weight: 600;
 
   &:disabled {
-    background-color: #969696;
+    background-color: #969696!important;
   }
 }
 
 .primary {
   background-color: $primary;
+
+  &:hover {
+    background-color: darken($primary, 7);
+  }
 }
 
 .secondary {
   background-color: $secondary;
+
+  &:hover {
+    background-color: darken($secondary, 7);
+  }
+}
+
+.danger {
+  background-color: $danger;
+
+  &:hover {
+    background-color: darken($danger, 7);
+  }
 }
 
 .add {

@@ -10,6 +10,8 @@ export enum ButtonThemes {
   // @ts-expect-error
   SECONDARY = style.secondary,
   // @ts-expect-error
+  DANGER = style.danger,
+  // @ts-expect-error
   ADD = style.add,
   // @ts-expect-error
   TRANSPARENT = style.transparent,

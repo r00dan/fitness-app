@@ -5,17 +5,21 @@ import weekdayPlugin from "dayjs/plugin/weekday";
 import objectPlugin from "dayjs/plugin/toObject";
 import isTodayPlugin from "dayjs/plugin/isToday";
 
-export interface IDay {
+import { ScheduleStore } from "stores/schedule/schedule.store";
+
+export interface Day {
   day: number;
   month: number;
   year: number;
   isCurrentMonth: boolean;
   isCurrentDay: boolean;
-  _date: Dayjs; 
+  workout?: ScheduleStore;
+  hasWorkout?: boolean;
+  _date: Dayjs;
 }
 
-export interface IWeek {
-  dates: IDay[];
+export interface Week {
+  dates: Day[];
 }
 
 export function useDateTimeHelper() {
@@ -28,9 +32,11 @@ export function useDateTimeHelper() {
 
   const [currentMonth, setCurrentMonth] = useState<Dayjs>(now);
 
-  const formateDateToObject = (date: Dayjs): IDay => {
+  const formateDateToObject = (date: Dayjs, workout?: ScheduleStore): Day => {
     const cloned = { ...date.toObject() };
     return {
+      workout,
+      hasWorkout: !!workout,
       day: cloned.date,
       month: cloned.months,
       year: cloned.years,

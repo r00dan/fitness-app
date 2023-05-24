@@ -15,10 +15,10 @@ export const enum Unit {
 }
 
 export function useSettings() {
-  const { user: { preferedLanguage, preferedUnit }, updateUser } = useUser();
+  const { user, updateUser } = useUser();
 
-  const defaultLanguage = preferedLanguage as Language ?? Language.EN;
-  const defaultUnit = preferedUnit as Unit ?? Unit.KG;
+  const defaultLanguage = user?.preferedLanguage as Language ?? Language.EN;
+  const defaultUnit = user?.preferedUnit as Unit ?? Unit.KG;
   
   const makeLanguageOptions = (): OptionType[] => ([
     {

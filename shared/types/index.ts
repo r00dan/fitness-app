@@ -1,42 +1,22 @@
-import {
-  Exercise,
-  History,
-  Schedule,
-  User,
-  WorkoutExercise,
-  WorkoutSet,
-  CustomExercise,
-} from '../../backend/src/infrastructure';
+import { Exercise, CreateExerciseDto, GetExerciseDto, UpdateExerciseDto } from '../../backend/src/modules/exercise';
+import { Schedule, CreateScheduleDto, GetScheduleDto } from '../../backend/src/modules/schedule';
+import { User, CreateUserDto, UpdateUserDto } from '../../backend/src/modules/user';
+import { Workout, WorkoutSet } from '../../backend/src/modules/workout';
 
-import {
-  GetExerciseDto,
-  CreateExerciseDto,
-  UpdateExerciseDto,
-  DeleteExerciseDto,
-  CreateScheduleDto,
-  CreateUserDto,
-  UpdateUserDto,
-  AddWorkoutScheduleDto,
-  CreateCustomExerciseDto,
-} from '../../backend/src/application/dto';
+export interface ExerciseDataType extends Exercise { };
+export interface CreateExerciseInput extends CreateExerciseDto { };
+export interface GetExerciseInput extends GetExerciseDto { };
+export interface UpdateExerciseInput extends UpdateExerciseDto { };
 
-export interface UserData extends User { };
-export interface ExerciseData extends Exercise { };
-export interface HistoryData extends History { };
-export interface ScheduleData extends Schedule { };
-export interface WorkoutExerciseData extends WorkoutExercise { };
-export interface WorkoutSetData extends WorkoutSet { };
-export interface CustomExerciseData extends CustomExercise { };
+export interface ScheduleDataType extends Schedule { };
+export interface CreateScheduleInput extends CreateScheduleDto { };
+export interface GetScheduleInput extends GetScheduleDto { };
 
-export interface GetExerciseDtoInput extends GetExerciseDto { };
-export interface CreateExerciseDtoInput extends CreateExerciseDto { };
-export interface UpdateExerciseDtoInput extends UpdateExerciseDto { };
-export interface DeleteExerciseDtoInput extends DeleteExerciseDto { };
+export interface UserDataType extends User { };
+export interface CreateUserInput extends CreateUserDto { };
+export interface UpdateUserInput extends UpdateUserDto { };
 
-export interface CreateScheduleDtoInput extends CreateScheduleDto { };
-export interface AddWorkoutScheduleDtoInput extends AddWorkoutScheduleDto { };
+export interface WorkoutDataType extends Workout { };
+export interface WorkoutSetDataType extends WorkoutSet { };
 
-export interface CreateUserDtoInput extends CreateUserDto { };
-export interface UpdateUserDtoInput extends UpdateUserDto { };
-
-export interface CreateCustomExerciseDtoInput extends CreateCustomExerciseDto { };
+export type { Nullable } from '../../backend/src/utils/common.types';

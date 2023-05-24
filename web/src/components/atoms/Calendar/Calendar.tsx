@@ -4,10 +4,10 @@ import classnames from 'classnames';
 
 import style from './Calendar.module.scss';
 
-import { IDay } from 'hooks';
+import { Day } from 'hooks';
 
 interface ICalendar {
-  onDayClick(date: IDay): void;
+  onDayClick(date: Day): void;
 }
 
 export function Calendar({ onDayClick }: ICalendar) {
@@ -22,7 +22,7 @@ export function Calendar({ onDayClick }: ICalendar) {
     handleCellClick,
   } = useCalendar();
 
-  const handleClick = (date: IDay) => {
+  const handleClick = (date: Day) => {
     if (date.isCurrentMonth) {
       handleCellClick(date);
       onDayClick(date);
@@ -74,6 +74,7 @@ export function Calendar({ onDayClick }: ICalendar) {
                   !date.isCurrentMonth && style.notCurrentMonth,
                   date.isCurrentDay && style.currentDay,
                   (selectedDay === date.day) && date.isCurrentMonth && style.selected,
+                  date.hasWorkout && date.isCurrentMonth && style.hasWorkout,
                 ])}
                 // TODO: remove arrow func
                 onClick={() => handleClick(date)}

@@ -3,10 +3,10 @@ import { type User, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { nanoid } from 'nanoid';
 
 import { auth } from '../main';
-import { CreateUserDtoInput } from 'shared-types';
 import { UserApi } from 'api';
 import { Language, Unit, useLoader } from 'hooks';
 import { useUser } from 'stores';
+import { CreateUserInput } from 'shared-types';
 
 interface IUseAuth {
   token: string;
@@ -27,16 +27,17 @@ export function useAuth(): IUseAuth {
   useEffect(() => {
     turnOnLoader();
     auth.onAuthStateChanged((data) => {
-      getUserInfo({ params: `/${data?.uid}` });
+      if (data) {
+        getUserInfo({ params: `/${data?.uid}` });
+        setUser(data);
+      }
       turnOffLoader();
-      setUser(data);
     });
   }, []);
 
   useEffect(() => {
     if (!loading && userData) {
-      const { customExercises, ...rest } = userData;
-      updateUser(rest);
+      updateUser(userData);
     }
   }, [loading]);
 
@@ -49,7 +50,7 @@ export function useAuth(): IUseAuth {
 
     const { email, displayName, uid } = user;
 
-    createUserApi<CreateUserDtoInput>({
+    createUserApi<CreateUserInput>({
       body: {
         id: uid ?? nanoid(),
         email: email!,
