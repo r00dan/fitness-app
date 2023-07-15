@@ -1,0 +1,16 @@
+#!/bin/bash
+export GOOGLE_CLIENT_ID=389296299348-fdrcd5vs3q2c2uhf1ro5p6rtr3a1gthu.apps.googleusercontent.com
+export GOOGLE_CLIENT_SECRET=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
+ 
+export POSTGRES_HOST=postgres
+export POSTGRES_PORT=5432
+export POSTGRES_USER=gym
+export POSTGRES_PASSWORD=123qwe
+export POSTGRES_DB=gym
+export RUN_MIGRATIONS=true
+
+export BACKEND_ROOT=./backend
+export BACKEND_BIND=7007
+
+export FRONTEND_ROOT=./web
+export FRONTEND_BIND=7000
